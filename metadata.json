@@ -1,0 +1,6 @@
+{
+  "name": "HA1 Exam Pro — Luyện thi Tiếng Anh HA1",
+  "description": "Phòng thi mô phỏng chuẩn Tiếng Anh HA1 tích hợp đầy đủ 3 kỹ năng Listening, Reading và Writing có chấm điểm tự động và giải thích chi tiết.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
