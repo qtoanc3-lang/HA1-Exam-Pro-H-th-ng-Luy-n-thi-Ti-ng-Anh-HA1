@@ -56,10 +56,11 @@ export const EXAM_BANK: Exam[] = [
                 ],
                 answer: 1,
                 ttsDialogue: [
-                  { role: 'male', text: "Where's Sue? Is she playing basketball with the girls outside?" },
-                  { role: 'female', text: "No, she isn't. She's in the classroom." },
-                  { role: 'male', text: 'Oh, is she sleeping at her desk again?' },
-                  { role: 'female', text: "No, look! She's sitting at her desk and reading a book." },
+                  { role: 'female', text: "Where's Sue, Tom? Is she outside playing basketball with the other girls?" },
+                  { role: 'male', text: "No, she isn't. She went back into the classroom a few minutes ago." },
+                  { role: 'female', text: 'Oh dear, is she sleeping at her desk again? She was so tired this morning.' },
+                  { role: 'male', text: "No, look through the window! She's wide awake — she's sitting at her desk and reading a book." },
+                  { role: 'female', text: 'Oh yes, I can see her now!' },
                 ],
                 evidence: "No, look! She's sitting at her desk and reading a book.",
                 explanation:
@@ -77,12 +78,12 @@ export const EXAM_BANK: Exam[] = [
                 ],
                 answer: 1,
                 ttsDialogue: [
-                  { role: 'female', text: 'Are the children at home watching television?' },
-                  { role: 'male', text: "No, they're at school now." },
-                  { role: 'female', text: 'Oh, are they singing in the music room?' },
+                  { role: 'male', text: 'Where are the children? Are they at home watching television?' },
+                  { role: 'female', text: "No, they haven't come home yet. They're still at school." },
+                  { role: 'male', text: 'Oh, is it music club? Are they singing in the music room?' },
                   {
-                    role: 'male',
-                    text: "Not right now. They're in their classroom, looking at the sentence 'The cat is black' on the board.",
+                    role: 'female',
+                    text: "Not today. They're in their classroom with the teacher, reading the sentence 'The cat is black' on the board.",
                   },
                 ],
                 evidence:
@@ -102,15 +103,19 @@ export const EXAM_BANK: Exam[] = [
                 ],
                 answer: 1,
                 ttsDialogue: [
-                  { role: 'male', text: "Look at the board! What's our teacher doing today?" },
-                  { role: 'female', text: 'Is he writing the letters A, B, C?' },
+                  { role: 'female', text: "Look into the classroom, Ben. What's the teacher doing on the board?" },
+                  { role: 'male', text: 'Let me see... Is he writing the letters A, B, C for the class?' },
+                  {
+                    role: 'female',
+                    text: "No, we don't have a male teacher today. Look again — it's our new female teacher!",
+                  },
                   {
                     role: 'male',
-                    text: "No, that was yesterday. Today we have a female teacher, and she's drawing a boat on the board.",
+                    text: 'Oh! Is she drawing shapes like a triangle and a circle?',
                   },
                   {
                     role: 'female',
-                    text: 'Oh yes! I thought she was drawing shapes like a triangle and a circle!',
+                    text: "No, look closely! She's drawing a big sailing boat on the board.",
                   },
                 ],
                 evidence: "Today we have a female teacher, and she's drawing a boat on the board.",
@@ -129,10 +134,10 @@ export const EXAM_BANK: Exam[] = [
                 ],
                 answer: 2,
                 ttsDialogue: [
-                  { role: 'male', text: 'What are the two girls eating in the kitchen? Sandwiches?' },
-                  { role: 'female', text: 'No, they finished their sandwiches earlier.' },
-                  { role: 'male', text: 'Are they eating bananas then?' },
-                  { role: 'female', text: "No, they're eating red apples. Look at them!" },
+                  { role: 'male', text: 'What are the two girls eating in the kitchen? Are they having sandwiches?' },
+                  { role: 'female', text: 'No, they ate their sandwiches for lunch earlier.' },
+                  { role: 'male', text: 'Well, what have they got now? Bananas?' },
+                  { role: 'female', text: "No, we don't have any bananas left. They're eating big red apples. Look!" },
                 ],
                 evidence: "No, they're eating red apples. Look at them!",
                 explanation:
@@ -152,13 +157,13 @@ export const EXAM_BANK: Exam[] = [
                 ttsDialogue: [
                   {
                     role: 'female',
-                    text: 'What are the boys doing in the living room? Are they playing with their toy cars?',
+                    text: 'What are the boys playing in the living room? Are they playing with their toy cars on the floor?',
                   },
-                  { role: 'male', text: 'No, those cars are on the shelf.' },
-                  { role: 'female', text: 'Then are they playing with robots on the floor?' },
+                  { role: 'male', text: 'No, those cars are still in the box.' },
+                  { role: 'female', text: 'Well, are they playing with their new robots then?' },
                   {
                     role: 'male',
-                    text: "No, they're sitting at the desk and playing a computer game together.",
+                    text: "No, they got bored with the robots. Look! They're sitting at the desk and playing a computer game together.",
                   },
                 ],
                 evidence: "No, they're sitting at the desk and playing a computer game together.",
@@ -182,10 +187,10 @@ export const EXAM_BANK: Exam[] = [
                 options: ['The United Kingdom', 'The United States', 'Ukraine', 'Russia'],
                 answer: 2,
                 ttsDialogue: [
-                  {
-                    role: 'female',
-                    text: "Hi, I'm Sasha. I live in the UK now, but my mother is from Ukraine, and she makes great yogurt.",
-                  },
+                  { role: 'male', text: 'Hi Sasha! Do you come to this market every weekend?' },
+                  { role: 'female', text: 'Hello! Yes, I live very near here in the UK now, so I love coming here.' },
+                  { role: 'male', text: 'And what about your family? Are they from here too?' },
+                  { role: 'female', text: 'No, actually my mother is from Ukraine, and she makes great homemade yoghurt!' },
                 ],
                 evidence: 'My mother is from Ukraine, and she makes great yogurt.',
                 explanation: 'Sasha nói rõ mẹ cô ấy đến từ Ukraine (C). UK là nơi hiện tại đang sống (bẫy A).',
@@ -198,9 +203,10 @@ export const EXAM_BANK: Exam[] = [
                 options: ['strawberries', 'tomatoes', 'yoghurt', 'avocadoes'],
                 answer: 2,
                 ttsDialogue: [
+                  { role: 'male', text: "So Sasha, what kinds of food can't you live without?" },
                   {
                     role: 'female',
-                    text: 'My favourite food is yoghurt. I eat it almost every morning with fruit.',
+                    text: "Well, that's difficult! I always have cheese at home, and I like black grapes and good homemade pasta. Oh, I know — my favourite food is yoghurt!",
                   },
                 ],
                 evidence: 'My favourite food is yoghurt.',
@@ -214,9 +220,10 @@ export const EXAM_BANK: Exam[] = [
                 options: ['cheese', 'salmon', 'chicken', 'bananas'],
                 answer: 3,
                 ttsDialogue: [
+                  { role: 'male', text: "Right, now let's talk to Mark. What food can't you live without?" },
                   {
-                    role: 'male',
-                    text: "Hello, I'm Mark. I try to eat healthy food. I have a banana for breakfast every day.",
+                    role: 'female',
+                    text: 'I love salmon and chicken for dinner, and one more thing... Oh, I know! Bananas. I have a banana for breakfast every day.',
                   },
                 ],
                 evidence: 'I have a banana for breakfast every day.',
@@ -230,9 +237,10 @@ export const EXAM_BANK: Exam[] = [
                 options: ['broccoli', 'carrots', 'yoghurt', 'mushroom'],
                 answer: 0,
                 ttsDialogue: [
+                  { role: 'male', text: 'Mark, are you buying dinner for tonight at the market?' },
                   {
-                    role: 'male',
-                    text: 'For dinner I usually eat vegetables with fish or meat. And I also love broccoli and potatoes.',
+                    role: 'female',
+                    text: 'Yes, for some friends! Fish is my favourite type of food, and I also love broccoli and potatoes. I need some potatoes and broccoli for tonight.',
                   },
                 ],
                 evidence: 'And I also love broccoli and potatoes.',
@@ -247,9 +255,11 @@ export const EXAM_BANK: Exam[] = [
                 answer: 1,
                 ttsDialogue: [
                   {
-                    role: 'female',
-                    text: "Hi, my name's Lynn. I'm from Australia, and I love fresh salads and fruit.",
+                    role: 'male',
+                    text: 'Borough Market is world famous, and it has visitors from many different countries. Lynn, where are you from?',
                   },
+                  { role: 'female', text: "I'm from Australia." },
+                  { role: 'male', text: 'I see your bag has a lot of very healthy food in it!' },
                 ],
                 evidence: "I'm from Australia.",
                 explanation:
@@ -263,9 +273,10 @@ export const EXAM_BANK: Exam[] = [
                 options: ['lettuce', 'tomatoes', 'strawberries', 'mushroom'],
                 answer: 3,
                 ttsDialogue: [
+                  { role: 'male', text: "Lynn, what five kinds of food can't you live without?" },
                   {
                     role: 'female',
-                    text: 'I eat a lot of lettuce, tomatoes, rice, avocados, and strawberries every week.',
+                    text: 'I eat salads all the time, so lettuce and big, juicy tomatoes for sure. I also like rice, amazing avocados, and strawberries — I really love strawberries!',
                   },
                 ],
                 evidence: 'I eat a lot of lettuce, tomatoes, rice, avocados, and strawberries.',
@@ -281,8 +292,8 @@ export const EXAM_BANK: Exam[] = [
                 answer: 0,
                 ttsDialogue: [
                   {
-                    role: 'male',
-                    text: 'Every winter we have a big Winter Carnival. It happens in Quebec in January.',
+                    role: 'female',
+                    text: "I'm from Quebec in Canada. Let me tell you about our Winter Carnival. It happens in Quebec in January. Thousands of people come from all over the world to see our ice sculptures.",
                   },
                 ],
                 evidence: 'It happens in Quebec in January.',
@@ -297,8 +308,8 @@ export const EXAM_BANK: Exam[] = [
                 answer: 2,
                 ttsDialogue: [
                   {
-                    role: 'male',
-                    text: 'There are many exciting events, and I enjoy watching the canoe race on the river.',
+                    role: 'female',
+                    text: "At the Winter Carnival, you can see a lot of different winter sports, too. I enjoy watching the canoe race on the river. It's really exciting!",
                   },
                 ],
                 evidence: 'I enjoy watching the canoe race on the river.',
@@ -313,8 +324,8 @@ export const EXAM_BANK: Exam[] = [
                 answer: 2,
                 ttsDialogue: [
                   {
-                    role: 'male',
-                    text: 'The carnival lasts ten days, so visitors have plenty of time to enjoy the snow sculptures.',
+                    role: 'female',
+                    text: 'At this time, we often eat hot French onion soup on a cold day. The carnival lasts ten days, and my favourite thing is watching the evening parade with my family.',
                   },
                 ],
                 evidence: 'The carnival lasts ten days.',
@@ -330,7 +341,7 @@ export const EXAM_BANK: Exam[] = [
                 ttsDialogue: [
                   {
                     role: 'female',
-                    text: "The 'Sun and Sea' restaurant has a great children's menu, so it's popular with families, especially at the weekends.",
+                    text: "My name is Celia and I'm a chef at a restaurant in Los Angeles called the Sun and Sea. The restaurant is near the beach, so it's popular with families, especially at the weekends.",
                   },
                 ],
                 evidence: "So it's popular with families, especially at the weekends.",
