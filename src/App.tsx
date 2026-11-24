@@ -43,15 +43,23 @@ export default function App() {
     const saved = SafeStorage.get<string>(STORAGE_KEYS.THEME, 'light');
     return saved === 'dark';
   });
-  const [customExams, setCustomExams] = useState<Exam[]>(() =>
-    SafeStorage.get<Exam[]>(STORAGE_KEYS.CUSTOM_EXAMS, [])
-  );
-  const [history, setHistory] = useState<ExamAttempt[]>(() =>
-    SafeStorage.get<ExamAttempt[]>(STORAGE_KEYS.HISTORY, [])
-  );
-  const [savedDraft, setSavedDraft] = useState<ExamDraft | null>(() =>
-    SafeStorage.get<ExamDraft | null>(STORAGE_KEYS.DRAFT, null)
-  );
+  const [customExams, setCustomExams] = useState<Exam[]>(() => {
+    const raw = SafeStorage.get<unknown>(STORAGE_KEYS.CUSTOM_EXAMS, []);
+    return Array.isArray(raw) ? (raw as Exam[]).filter((e) => e && typeof e.id === 'string' && Array.isArray(e.sections)) : [];
+  });
+  const [history, setHistory] = useState<ExamAttempt[]>(() => {
+    const raw = SafeStorage.get<unknown>(STORAGE_KEYS.HISTORY, []);
+    return Array.isArray(raw) ? (raw as ExamAttempt[]) : [];
+  });
+  const [savedDraft, setSavedDraft] = useState<ExamDraft | null>(() => {
+    const raw = SafeStorage.get<unknown>(STORAGE_KEYS.DRAFT, null);
+    if (!raw || typeof raw !== 'object') return null;
+    const candidate = raw as Partial<ExamDraft>;
+    if (typeof candidate.examId !== 'string' || !candidate.answers || typeof candidate.answers !== 'object') {
+      return null;
+    }
+    return candidate as ExamDraft;
+  });
 
   // Dashboard & Exam Workspace State
   const [defaultMode, setDefaultMode] = useState<ExamMode>('exam');

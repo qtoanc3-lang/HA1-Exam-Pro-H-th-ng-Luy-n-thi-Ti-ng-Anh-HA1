@@ -2,7 +2,10 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import fs from 'fs';
 import path from 'path';
-import {defineConfig} from 'vite';
+import { fileURLToPath } from 'url';
+import { defineConfig } from 'vite';
+
+const rootDir = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(() => {
   return {
@@ -20,18 +23,42 @@ export default defineConfig(() => {
           if (error) {
             return;
           }
-          const distDir = path.resolve(__dirname, 'dist');
-          const srcAssets = path.resolve(__dirname, 'src/assets');
+          const distDir = path.resolve(rootDir, 'dist');
+          const srcAssets = path.resolve(rootDir, 'src/assets');
           const distAssets = path.resolve(distDir, 'src/assets');
           if (fs.existsSync(distDir) && fs.existsSync(srcAssets)) {
-            fs.cpSync(srcAssets, distAssets, {recursive: true, force: true});
+            fs.cpSync(srcAssets, distAssets, { recursive: true, force: true });
+          }
+        },
+      },
+      // Strips the raw-source GitHub Pages redirect script from built HTML
+      // and mirrors dist/ -> docs/ so GitHub Pages works under ALL 3 modes:
+      // (1) GitHub Actions, (2) Branch -> /docs, and (3) Branch -> / (root).
+      {
+        name: 'github-pages-compat',
+        apply: 'build',
+        transformIndexHtml(html: string): string {
+          return html.replace(
+            /\s*<!--\s*GitHub Pages root fallback[\s\S]*?<script\s+data-gh-pages-fallback>[\s\S]*?<\/script>/i,
+            ''
+          );
+        },
+        closeBundle(error?: Error): void {
+          if (error) {
+            return;
+          }
+          const distDir = path.resolve(rootDir, 'dist');
+          const docsDir = path.resolve(rootDir, 'docs');
+          if (fs.existsSync(distDir)) {
+            fs.rmSync(docsDir, { recursive: true, force: true });
+            fs.cpSync(distDir, docsDir, { recursive: true, force: true });
           }
         },
       },
     ],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': rootDir,
       },
     },
     server: {
